@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { reactRouter } from "@react-router/dev/vite";
 import autoprefixer from "autoprefixer";
 import tailwindcss from "tailwindcss";
@@ -11,4 +12,10 @@ export default defineConfig({
     },
   },
   plugins: [reactRouter(), tsconfigPaths()],
-});
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/test/setup.ts'],
+    css: true,
+  },
+})
